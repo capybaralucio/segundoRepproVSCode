@@ -13,12 +13,12 @@ class ClubeParticipante(ABC):
 
     def exibir_dados(self):
         print(f"\n--- Dados dos Clubes Participantes ---")
-        print(f"\nNOME DO CLUBE: {self.nome}.")
-        print(f"\nPAIS: {self.pais}.")
-        print(f"\nCONFEDERAÇÃO: {self.confederacao}.")
-        print(f"\nRANKING: {self.ranking_fifa}.")
-        print(f"\nGOLS MARCADOS: {self.gols_marcados}.")
-        print(f"VITÓRIAS: {self.vitorias}.")
+        print(f"\nNOME DO CLUBE: {self.nome}")
+        print(f"\nPAIS: {self.pais}")
+        print(f"\nCONFEDERAÇÃO: {self.confederacao}")
+        print(f"\nRANKING: {self.ranking_fifa}")
+        print(f"\nGOLS MARCADOS: {self.gols_marcados}")
+        print(f"\nVITÓRIAS: {self.vitorias}")
     
     @abstractmethod
     def calcular_desempenho(self):
@@ -35,21 +35,21 @@ class ClubeParticipante(ABC):
 
 class ClubeUEFA(ClubeParticipante):
     def calcular_desempenho(self):
-        return (self.vitorias * 3 + self.gols_marcados * 0.5)
+        return (self.vitorias * 3) + (self.gols_marcados * 0.5)
 
     def gerar_relatorio_tecnico(self):
         self.exibir_dados()
         desempenho = self.calcular_desempenho()
-        print(f"\n- Desempenho Técnico: {desempenho:.2}")
+        print(f"\n- Desempenho Técnico: {desempenho:.2f}")
 
 class ClubeCONMEBOL(ClubeParticipante):
     def calcular_desempenho(self):
-        return (self.vitorias * 3 + self.gols_marcados * 0.7)
+        return (self.vitorias * 3) + (self.gols_marcados * 0.7)
 
     def gerar_relatorio_tecnico(self):
         self.exibir_dados()
         desempenho = self.calcular_desempenho()
-        print(f"\n- Desempenho Técnico: {desempenho:.2}")
+        print(f"\n- Desempenho Técnico: {desempenho:.2f} ")
 
 
 
@@ -61,6 +61,7 @@ def main():
 
     for clube in clubes:
         print("\n" + "-" * 40)
+        clube.gerar_relatorio_tecnico()
 
 if __name__ == "__main__":
     main()

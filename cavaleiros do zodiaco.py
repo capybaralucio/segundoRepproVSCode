@@ -1,5 +1,3 @@
-
-
 class Personagem:
     def __init__(self, nome, constelacao):
         self.nome = nome
@@ -29,15 +27,14 @@ class CavaleiroDeOuro(Personagem):
 
 class CavaleiroHibrido(CavaleiroDeBronze, CavaleiroDeOuro):
     def __init__(self, nome, constelacao, poder_de_luta, casa_do_zodiaco):
-        CavaleiroDeBronze.__init__(self, nome, constelacao, poder_de_luta)
-        self.casa_do_zodiaco = casa_do_zodiaco
+        CavaleiroDeOuro.__init__(self, nome, constelacao, casa_do_zodiaco)
+        self.poder_de_luta = poder_de_luta
 
     def golpe_especial(self):
         print(f"\n- {self.nome} realiza um golpe híbrido com poder de luta {self.poder_de_luta} !")
 
     def defender_casa(self):
         print(f"\n- {self.nome} protege a casa de {self.casa_do_zodiaco}.")
-
 
 def main():
     
@@ -47,11 +44,10 @@ def main():
         print("\n=== ! CAVALEIROS DO ZODÍACO ! ===\n")
         print("1. Cadastrar Cavaleiro")
         print("2. Listar todos os Cavaleiros")
-        print("3. Executar os Golpes Especiais / Defesas")
+        print("3. Executar Habilidades")
         print("4. Sair")
 
         opcao = input("\nEscolha uma opção: ")
-
 
         if opcao == "1":
                 
@@ -85,7 +81,7 @@ def main():
                     continue
 
                 personagens.append(personagem)
-                print("Cavaleiro cadastrado com sucesso !")
+                print("\nCavaleiro cadastrado com sucesso !\n")
 
 
         elif opcao == "2":
@@ -108,11 +104,11 @@ def main():
                 print("\n--- HABILIDADES ---\n")
                 for p in personagens:
                     print(f"\n- {p.nome}: ")
-                    if isinstance(p,CavaleiroDeBronze):
+                    if isinstance(p, CavaleiroDeBronze):
                         p.golpe_especial()
                     
-                    if isinstance(p,CavaleiroDeOuro):
-                        p.defender_casa
+                    if isinstance(p, CavaleiroDeOuro):
+                        p.defender_casa()
                         
 
         elif opcao == "4":
