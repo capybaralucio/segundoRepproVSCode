@@ -13,8 +13,8 @@ class VeiculoTransporte(ABC):
 
 class Onibus(VeiculoTransporte):
     def __init__(self, placa, capacidade_passageiros, consumo_Km):
-    super().__init__(placa, capacidade_passageiros)
-    self.consumo_Km = consumoPorKm
+        super().__init__(placa, capacidade_passageiros)
+        self.consumo_Km = consumoPorKm
 
     def calcularCustoOperacional(self):
         return self.consumo_Km * 6.0
